@@ -36,13 +36,15 @@ class HangmanGame {
     		generator = new WordGenerator(wordList);
     	}
         this.secretWord = generator.selectSecretWord();
-        this.wordProgress = initializeWordProgress(secretWord);
+        initializeWordProgress(secretWord);
         this.remainingAttempts = remainingAttempts; // Set the maximum number of attempts
     }
 
-    private char[] initializeWordProgress(String secretWord) {
-        // Code to initialize the word progress with dashes for each letter
-        return new char[secretWord.length()];
+    public void initializeWordProgress(String secretWord) {
+        wordProgress = new char[secretWord.length()];
+        for(int i = 0; i < wordProgress.length; i++) {
+            wordProgress[i] = '_';
+        }
     }
 
     public void play() {
